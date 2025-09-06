@@ -1,6 +1,8 @@
 // Database connection and query utilities for Trust Ride
 // Provides type-safe database operations and connection management
 
+import { hashPassword } from "./auth"
+
 export interface User {
   id: number
   name: string
@@ -75,7 +77,36 @@ class MockDatabase {
     this.initializeSampleData()
   }
 
-  private initializeSampleData() {
+  private async initializeSampleData() {
+    try {
+      const sampleUsers = [
+        {
+          name: "John Doe",
+          email: "john@example.com",
+          password_hash: await hashPassword("TrustRide2024!John"),
+          guardian_contact: "+1234567890",
+        },
+        {
+          name: "Jane Smith",
+          email: "jane@example.com",
+          password_hash: await hashPassword("SecurePass#Jane99"),
+          guardian_contact: "+0987654321",
+        },
+      ]
+
+      for (const userData of sampleUsers) {
+        const user: User = {
+          ...userData,
+          id: this.users.length + 1,
+          created_at: new Date(),
+          updated_at: new Date(),
+        }
+        this.users.push(user)
+      }
+    } catch (error) {
+      console.error("Error initializing sample users:", error)
+    }
+
     // Sample drivers
     this.drivers = [
       {
