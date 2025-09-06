@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { MapPin } from "lucide-react"
+import { getGoogleMapsScript } from "@/lib/maps-server"
 
 interface GoogleMapsAutocompleteProps {
   label: string
@@ -23,8 +24,24 @@ export function GoogleMapsAutocomplete({
   const inputRef = useRef<HTMLInputElement>(null)
   const autocompleteRef = useRef<any>(null)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [scriptUrl, setScriptUrl] = useState<string>("")
 
   useEffect(() => {
+    const getScriptUrl = async () => {
+      try {
+        const url = await getGoogleMapsScript()
+        setScriptUrl(url)
+      } catch (error) {
+        console.error("Failed to get Google Maps script:", error)
+      }
+    }
+
+    getScriptUrl()
+  }, [])
+
+  useEffect(() => {
+    if (!scriptUrl) return
+
     const loadGoogleMaps = async () => {
       if (window.google && window.google.maps) {
         initializeAutocomplete()
@@ -32,7 +49,7 @@ export function GoogleMapsAutocomplete({
       }
 
       const script = document.createElement("script")
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`
+      script.src = scriptUrl
       script.async = true
       script.defer = true
       script.onload = initializeAutocomplete
@@ -43,7 +60,7 @@ export function GoogleMapsAutocomplete({
       if (window.google && window.google.maps && inputRef.current) {
         autocompleteRef.current = new window.google.maps.places.Autocomplete(inputRef.current, {
           types: ["address"],
-          componentRestrictions: { country: "us" }, // Restrict to US addresses
+          componentRestrictions: { country: "us" },
         })
 
         autocompleteRef.current.addListener("place_changed", () => {
@@ -68,7 +85,7 @@ export function GoogleMapsAutocomplete({
         window.google?.maps?.event?.clearInstanceListeners(autocompleteRef.current)
       }
     }
-  }, [onChange])
+  }, [onChange, scriptUrl])
 
   return (
     <div className="space-y-2">
