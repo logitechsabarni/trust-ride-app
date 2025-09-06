@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { db } from "@/lib/database"
-import { generateToken, verifyGoogleToken } from "@/lib/auth"
+import { generateToken } from "@/lib/auth"
+import { verifyGoogleToken } from "@/lib/auth-server"
 
 export async function POST(request: NextRequest) {
   try {

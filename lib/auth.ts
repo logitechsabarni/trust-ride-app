@@ -1,9 +1,8 @@
-// Authentication utilities for Trust Ride
-// Handles JWT tokens, password hashing, session management, and Google OAuth
+// Authentication utilities for Trust Ride - Client-safe version
+// Handles JWT tokens, password hashing, and session management
 
 import { SignJWT, jwtVerify } from "jose"
 import bcrypt from "bcryptjs"
-import { GoogleAuth } from "google-auth-library"
 
 const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET || "trust-ride-secret-key-change-in-production")
 
@@ -62,29 +61,4 @@ export async function authenticateRequest(request: Request): Promise<JWTPayload 
   }
 
   return verifyToken(token)
-}
-
-// Google OAuth configuration
-const googleAuth = new GoogleAuth({
-  credentials: {
-    client_id: process.env.GOOGLE_CLIENT_ID,
-    client_secret: process.env.GOOGLE_CLIENT_SECRET,
-  },
-})
-
-// Verify Google OAuth token
-export async function verifyGoogleToken(token: string): Promise<any> {
-  try {
-    const client = googleAuth.getClient()
-    const ticket = await client.verifyIdToken({
-      idToken: token,
-      audience: process.env.GOOGLE_CLIENT_ID,
-    })
-
-    const payload = ticket.getPayload()
-    return payload
-  } catch (error) {
-    console.error("Google token verification failed:", error)
-    return null
-  }
 }
