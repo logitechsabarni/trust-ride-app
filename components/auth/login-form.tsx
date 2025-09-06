@@ -79,6 +79,7 @@ export function LoginForm() {
         throw new Error(data.error || "Google login failed")
       }
 
+      document.cookie = `trust-ride-token=${data.token}; path=/; max-age=${24 * 60 * 60}; secure; samesite=strict`
       localStorage.setItem("trust-ride-token", data.token)
       router.push("/dashboard")
     } catch (err) {
@@ -113,6 +114,7 @@ export function LoginForm() {
         }
       }
 
+      document.cookie = `trust-ride-token=${result.token}; path=/; max-age=${24 * 60 * 60}; secure; samesite=strict`
       localStorage.setItem("trust-ride-token", result.token)
       router.push("/dashboard")
     } catch (err) {
