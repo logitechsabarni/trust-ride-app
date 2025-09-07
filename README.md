@@ -18,7 +18,7 @@ Your project is live at:
 
 ## Build your app
 
-Continue building your app on:
+Continue building your app on:"
 
 **[https://v0.app/chat/projects/fHad9wbqzmR](https://v0.app/chat/projects/fHad9wbqzmR)**
 
