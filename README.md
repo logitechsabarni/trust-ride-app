@@ -1,30 +1,22 @@
-# Trust Ride App
+Hello everyone,
+I’m excited to present our project Trust Ride – Safe & Verified Journeys.
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+We built Trust Ride to solve one of the biggest issues in ride-hailing today: lack of transparency and safety. Passengers often don’t know if a driver’s information is genuine, ride data can be manipulated, and when emergencies happen, there’s little accountability.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/guhasabarni21-3754s-projects/v0-trust-ride-app)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/projects/fHad9wbqzmR)
+Our solution combines blockchain and AI to create a safety-first ride-hailing platform.
 
-## Overview
+Driver Verification: Every driver registers with a license, and their verification is stored immutably on blockchain. Once verified, it cannot be faked or tampered with.
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+Ride Records: Each ride automatically generates a blockchain transaction hash, meaning ride details are permanently logged and transparent.
 
-## Deployment
+Safety Alerts: Riders have access to a panic button during trips. If triggered, an alert is recorded on blockchain, timestamped, and visible in the dashboard as undeniable proof.
 
-Your project is live at:
+User Experience: The app starts with a signup/login page powered by Google authentication. Riders can book rides, drivers can manage trips, and both can track verification status through a clean dashboard.
 
-**[https://vercel.com/guhasabarni21-3754s-projects/v0-trust-ride-app](https://vercel.com/guhasabarni21-3754s-projects/v0-trust-ride-app)**
+We also created a Blockchain Dashboard, where all verification statuses, ride hashes, and safety alerts can be monitored in real time. This creates trust between drivers, riders, and regulators.
 
-## Build your app
+Technically, we’ve used React and Node.js for the app, PostgreSQL for data, Google Auth for login, and integrated a mock blockchain layer for immutable records. The design emphasizes safety, transparency, and ease of use.
 
-Continue building your app on:
+In short, Trust Ride makes urban commuting safer by ensuring that safety you can trust is backed by evidence you can verify.
 
-**[https://v0.app/chat/projects/fHad9wbqzmR](https://v0.app/chat/projects/fHad9wbqzmR)**
-
-## How It Works
-
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+Thank you.
