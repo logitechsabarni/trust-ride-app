@@ -20,3 +20,8 @@ Technically, we’ve used React and Node.js for the app, PostgreSQL for data, Go
 In short, Trust Ride makes urban commuting safer by ensuring that safety you can trust is backed by evidence you can verify.
 
 Thank you.
+
+
+https://v0-trust-ride-app.vercel.app/- the app made 
+https://trust-ride-chain.lovable.app/- an AI prototype made for the understanding of the app
+
