@@ -1,5 +1,5 @@
 Hello everyone,
-I’m excited to present our project Trust Ride – Safe & Verified Journeys.
+I’m excited to present our project Trust Ride – Safe & Verified Journeys built during SIH hackathon.
 
 We built Trust Ride to solve one of the biggest issues in ride-hailing today: lack of transparency and safety. Passengers often don’t know if a driver’s information is genuine, ride data can be manipulated, and when emergencies happen, there’s little accountability.
 
